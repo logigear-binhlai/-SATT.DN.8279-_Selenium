@@ -3,12 +3,15 @@ package Railway;
 import Constant.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+
+import java.util.Objects;
 
 public class LoginPage extends  GeneralPage{
 
-    //Locators:
-    public final By txtUsername = By.xpath("//input[@id='username']");
-    public final By txtPassword = By.xpath("//input[@id='password']");
+//    Locator
+    public final By txtUsername = By.id("username");
+    public final By txtPassword = By.id("password");
     public final By btnLogin = By.xpath("//input[@value='login']");
     public final By lblLoginErrorMsg = By.xpath("//p[@class='message error LoginForm']");
 
@@ -17,42 +20,36 @@ public class LoginPage extends  GeneralPage{
     {
         return Constant.WEBDRIVER.findElement(txtUsername);
     }
+
     public WebElement getTxtPassword()
     {
         return Constant.WEBDRIVER.findElement(txtPassword);
     }
+
     public WebElement getBtnLogin()
     {
-
         return Constant.WEBDRIVER.findElement(btnLogin);
     }
+
     public WebElement getLblLoginErrorMsg()
     {
-
         return Constant.WEBDRIVER.findElement(lblLoginErrorMsg);
     }
 
     //Methods
-    public void loginValidData(String username, String password)
+    public void login(String username, String password)
     {
-        //Login with valid username and password
         this.getTxtUsername().sendKeys(username);
         this.getTxtPassword().sendKeys(password);
         this.getBtnLogin().click();
     }
 
-    public void loginWithBlankUsername(String password)
+    public void loginMultipleInvalidPassword(String username, String password, int times)
     {
-        //Login with blank username
-        this.getTxtPassword().sendKeys(password);
-        this.getBtnLogin().click();
-    }
-
-    public void loginWithInValidPassword(String username ,String password)
-    {
-        //Login with valid username and invalid password
-        this.getTxtUsername().sendKeys(username);
-        this.getTxtPassword().sendKeys(password);
-        this.getBtnLogin().click();
+        for(int i = 0; i < times; i++)
+        {
+            this.login(username,password );
+            this.getTxtUsername().clear();
+        }
     }
 }
