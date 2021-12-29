@@ -21,18 +21,8 @@ public class Testcase10 extends TestBase {
 
         System.out.println("TC 10 - Step3: Check point.");
         String actualMsg = registerPage.getLblErrorMsg().getText();
-//        String actualPasswordMsg = registerPage.getLblErrorPasswordMsg().getText();
-//        String actualPidMsg = registerPage.getLblErrorPidMsg().getText();
-
         String expectedMsg = Constant.ERROR_USED_MAIL_MSG;
-//        String expectedPasswordMsg = Constant.ERROR_PASSWORD_MSG;
-//        String expectedPidMsg = Constant.ERROR_PID_MSG;
-
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
-//        Assert.assertEquals(actualPasswordMsg, expectedPasswordMsg, "Welcome message is not displayed as expected");
-//        Assert.assertEquals(actualPidMsg, expectedPidMsg, "Welcome message is not displayed as expected");
-
-
     }
 }
 

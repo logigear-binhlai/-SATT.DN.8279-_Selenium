@@ -40,26 +40,23 @@ public class Constant
     public static final String ERROR_PASSWORD_MSG = "Invalid password length";
     public static final String ERROR_PID_MSG = "Invalid ID length";
 
-//  change password
+//  Change password
     public static final String CURRENT_PASSWORD = "1111111111";
     public static final String NEW_PASSWORD = "a123:\'/{}!@$\\";
     public static final String CONFIRM_PASSWORD = "/{}!@$\\";
     public static final String ERROR_CONFIRM_PASSWORD_MSG = "Password change failed. Please correct the errors and try again.";
     public static final String ERROR_CONFIRM_PASSWORD_FIELD = "The password confirmation does not match the new password.";
 
-//    Errors
-    public static final String[] ERRORS = {
-            "There was a problem with your login and/or errors exist in your form.",
-            "Invalid username or password. Please try again.",
-            "You have used 4 out of 5 login attempts. After all 5 have been used, you will be unable to login for 15 " +
-                    "minutes.",
-            "Password change failed. Please correct the errors and try again.",
-            "The password confirmation does not match the new password.",
-            "This email address is already in use.",
-            "There're errors in the form. Please correct the errors and try again.",
+//    Book ticket
+    public static final int DEPART_DATE = Utilities.randomDepartDate();
+    public static final String DEPART_STATION = "Quảng Ngãi";
+    public static final String ARRIVE_STATION = "Nha Trang";
+    public static final int SEAT_TYPE = Utilities.randomSeatType();
+    public static final String TICKET_AMOUNT = "1";
+    public static final String SUCCESS_MSG = "Ticket booked successfully!";
 
-    };
-
+//    Train ticket table
+    public static final String TITLE_TICKET_PRICE = "Safe Railway - Ticket Price";
 }
 
 
