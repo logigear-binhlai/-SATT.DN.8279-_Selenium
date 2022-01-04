@@ -5,8 +5,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Testcase14 extends TestBase {
-    @Test(description = "TC 14 - User can book many tickets at a time.")
-    public void TC14()
+    @Test(description = "TC 14 - User can book many tickets at a time.", dataProvider = "BookTicket",
+    dataProviderClass = DataProviderClass.class)
+    public void TC14(String depart_date, String depart_station, String arrive_station, String seat_type,
+                     String ticket_amount)
     {
         HomePage homePage = new HomePage();
         LoginPage loginPage = new LoginPage();
@@ -23,7 +25,8 @@ public class Testcase14 extends TestBase {
         homePage.gotoBookTicket();
 
         System.out.println("TC 14 - Step4: Book Ticket.");
-        bookTicketPage.bookTicket();
+        bookTicketPage.bookTicketWithDataProvider(depart_date, depart_station, arrive_station,
+                seat_type, ticket_amount);
 
         System.out.println("TC 14 - Step5: Check point.");
         String actualMsg = bookTicketPage.getTxtSuccess().getText();

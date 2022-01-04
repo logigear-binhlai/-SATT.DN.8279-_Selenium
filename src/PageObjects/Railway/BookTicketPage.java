@@ -2,6 +2,7 @@ package Railway;
 
 import Constant.Constant;
 import org.openqa.selenium.By;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -18,6 +19,8 @@ public class BookTicketPage
     public final By btnBookTicket = By.xpath("//input[@value='Book ticket']");
     public final By txtSuccessBookTicket = By.xpath("//div[@id='content']/h1");
     public final WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 20);
+    public final By lblErrorMsg = By.xpath("//p[@class='message error']");
+    public final By lblErrorTicketAmountMsg = By.xpath("//label[@class='validation-error']");
 
 //    Element
     public Select getDdlDepartDate()
@@ -65,6 +68,16 @@ public class BookTicketPage
         return wait.until(ExpectedConditions.visibilityOfElementLocated(txtSuccessBookTicket));
     }
 
+    public WebElement getErrorMsg()
+    {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(lblErrorMsg));
+    }
+
+    public WebElement getErrorTicketAmountMsg()
+    {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(lblErrorTicketAmountMsg));
+    }
+
 //    Methods
     public void bookTicket()
     {
@@ -74,5 +87,31 @@ public class BookTicketPage
         getDdlSeatType().selectByIndex(Constant.SEAT_TYPE);
         getDdlTicketAmount().selectByVisibleText(Constant.TICKET_AMOUNT);
         getBtnBookTicket().click();
+    }
+
+    public void bookTicketWithDataProvider(String depart_date, String depart_station, String arrive_station,
+                                           String seat_type, String ticket_amount) {
+        getDdlDepartDate().selectByVisibleText(depart_date);
+        getDdlDepartStation().selectByVisibleText(depart_station);
+        getDdlArriveStation().selectByVisibleText(arrive_station);
+        getDdlSeatType().selectByVisibleText(seat_type);
+        getDdlTicketAmount().selectByVisibleText(ticket_amount);
+        getBtnBookTicket().click();
+    }
+
+    public void bookTicketMultipleTimes(int times)
+    {
+        for(int i = 0; i < times; i++)
+        {
+            HomePage homePage = new HomePage();
+            homePage.gotoBookTicket();
+            getDdlDepartDate().selectByIndex(Constant.DEPART_DATE);
+            getDdlDepartStation().selectByVisibleText(Constant.DEPART_STATION);
+            getDdlArriveStation().selectByVisibleText(Constant.ARRIVE_STATION);
+            getDdlSeatType().selectByIndex(Constant.SEAT_TYPE);
+            getDdlTicketAmount().selectByVisibleText(Constant.TICKET_AMOUNT_MULTIPLE);
+            getBtnBookTicket().click();
+        }
+
     }
 }

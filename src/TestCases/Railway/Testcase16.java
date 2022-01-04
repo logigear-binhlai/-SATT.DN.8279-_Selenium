@@ -36,10 +36,8 @@ public class Testcase16 extends TestBase {
         System.out.println("TC 16 - Step7: select \'Yes\' on the pop up alert.");
         myTicketPage.acceptAlert();
 
-//        System.out.println("TC 14 - Step8: Check point.");
-//        String actualMsg = trainTimeTablePage.getTittle();
-//        String expectedMsg = Constant.TITLE_TICKET_PRICE;
-//        Assert.assertEquals(actualMsg, expectedMsg, "An message is not displayed as design.");
+        System.out.println("TC 16 - Step8: Check point.");
+        Assert.assertFalse(myTicketPage.isItemDisplay(), "Deleted Item was displayed. Failed.");
     }
 }
 

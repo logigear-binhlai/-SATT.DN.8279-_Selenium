@@ -53,7 +53,9 @@ public class Constant
     public static final String ARRIVE_STATION = "Nha Trang";
     public static final int SEAT_TYPE = Utilities.randomSeatType();
     public static final String TICKET_AMOUNT = "1";
+    public static final String TICKET_AMOUNT_MULTIPLE = "1";
     public static final String SUCCESS_MSG = "Ticket booked successfully!";
+    public static final String ERROR_TicketAmount_MSG = "You have booked 10 tickets. You can book no more.";
 
 //    Train ticket table
     public static final String TITLE_TICKET_PRICE = "Safe Railway - Ticket Price";

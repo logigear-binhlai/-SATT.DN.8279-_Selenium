@@ -16,7 +16,9 @@ public class MyTicketPage {
 //    Locator
     public final By btnCancel = By.xpath("//*[@id=\"content\"]/form//table[@class='MyTable']/tbody/tr[count(" +
         "//table[@class='MyTable']/tbody/tr)]//input");
-    WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 20);
+    public final By btnDeletedCancel = By.xpath("//*[@id=\"content\"]/form//table[@class='MyTable']/tbody/tr[count(" +
+            "//table[@class='MyTable']/tbody/tr) + 1]");
+    WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 10);
 
 //    Elments
     public WebElement getBtnCancel()
@@ -40,5 +42,10 @@ public class MyTicketPage {
         rb.keyPress(KeyEvent.VK_DOWN);
         Alert alert = Constant.WEBDRIVER.switchTo().alert();
         alert.accept();
+    }
+
+    public Boolean isItemDisplay()
+    {
+        return Constant.WEBDRIVER.findElement(btnDeletedCancel).isDisplayed();
     }
 }
