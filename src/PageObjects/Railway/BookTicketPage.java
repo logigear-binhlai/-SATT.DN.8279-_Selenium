@@ -1,8 +1,7 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
 import org.openqa.selenium.By;
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -18,7 +17,7 @@ public class BookTicketPage
     public final By ddlTicketAmount = By.name("TicketAmount");
     public final By btnBookTicket = By.xpath("//input[@value='Book ticket']");
     public final By txtSuccessBookTicket = By.xpath("//div[@id='content']/h1");
-    public final WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 20);
+    public final WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 10);
     public final By lblErrorMsg = By.xpath("//p[@class='message error']");
     public final By lblErrorTicketAmountMsg = By.xpath("//label[@class='validation-error']");
 
@@ -99,17 +98,19 @@ public class BookTicketPage
         getBtnBookTicket().click();
     }
 
-    public void bookTicketMultipleTimes(int times)
+    public void bookTicketMultipleTimes(String depart_date, String depart_station, String arrive_station,
+                                        String seat_type, String ticket_amount, int times)
     {
         for(int i = 0; i < times; i++)
         {
             HomePage homePage = new HomePage();
-            homePage.gotoBookTicket();
-            getDdlDepartDate().selectByIndex(Constant.DEPART_DATE);
-            getDdlDepartStation().selectByVisibleText(Constant.DEPART_STATION);
-            getDdlArriveStation().selectByVisibleText(Constant.ARRIVE_STATION);
-            getDdlSeatType().selectByIndex(Constant.SEAT_TYPE);
-            getDdlTicketAmount().selectByVisibleText(Constant.TICKET_AMOUNT_MULTIPLE);
+            homePage.goToBookTicket();
+
+            getDdlDepartDate().selectByVisibleText(depart_date);
+            getDdlDepartStation().selectByVisibleText(depart_station);
+            getDdlArriveStation().selectByVisibleText(arrive_station);
+            getDdlSeatType().selectByVisibleText(seat_type);
+            getDdlTicketAmount().selectByVisibleText(ticket_amount);
             getBtnBookTicket().click();
         }
 

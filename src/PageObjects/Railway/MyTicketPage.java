@@ -1,23 +1,18 @@
 package Railway;
 
-import Constant.Constant;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import Common.Constant;
+import Common.Utilities;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.awt.*;
-import java.awt.event.KeyEvent;
+
 
 public class MyTicketPage {
 
 //    Locator
-    public final By btnCancel = By.xpath("//*[@id=\"content\"]/form//table[@class='MyTable']/tbody/tr[count(" +
-        "//table[@class='MyTable']/tbody/tr)]//input");
-    public final By btnDeletedCancel = By.xpath("//*[@id=\"content\"]/form//table[@class='MyTable']/tbody/tr[count(" +
-            "//table[@class='MyTable']/tbody/tr) + 1]");
+    public final By btnCancel = By.xpath("//*[@id=\"content\"]/form//table[@class='MyTable']/tbody/tr//td/" +
+        "input[@onclick='DeleteTicket(4658);']");
     WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 10);
 
 //    Elments
@@ -38,14 +33,19 @@ public class MyTicketPage {
     }
 
     public void acceptAlert() throws InterruptedException, AWTException {
-        Robot rb = new Robot();
-        rb.keyPress(KeyEvent.VK_DOWN);
         Alert alert = Constant.WEBDRIVER.switchTo().alert();
         alert.accept();
+        Utilities.scrollPage(400);
     }
 
     public Boolean isItemDisplay()
     {
-        return Constant.WEBDRIVER.findElement(btnDeletedCancel).isDisplayed();
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(btnCancel)).isDisplayed();
+        } catch(TimeoutException ex) {
+            System.out.println(ex);
+        }
+        return false;
     }
+
 }

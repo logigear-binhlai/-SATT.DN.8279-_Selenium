@@ -1,6 +1,6 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,19 +16,19 @@ public class Testcase16 extends TestBase {
 
         System.out.println("TC 16 - Step1: Navigate to Login Page.");
         homePage.navigateToHomePage();
-        homePage.gotoLoginPage();
+        homePage.goToLoginPage();
 
         System.out.println("TC 16 - Step2: Login with valid account.");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
         System.out.println("TC 16 - Step3: Navigate to Book Ticket Page.");
-        homePage.gotoBookTicket();
+        homePage.goToBookTicket();
 
         System.out.println("TC 16 - Step4: Book a ticket");
         bookTicketPage.bookTicket();
 
         System.out.println("TC 16 - Step5: Navigate to My Ticket.");
-        homePage.gotoMyTicket();
+        homePage.goToMyTicket();
 
         System.out.println("TC 16 - Step6: Cancel a ticket");
         myTicketPage.cancelTicket();

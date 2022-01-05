@@ -1,11 +1,17 @@
 package Common;
 
+import org.openqa.selenium.JavascriptExecutor;
+
 import java.security.SecureRandom;
 
 public class Utilities {
     //    get path project
     public static String getProjectPath() {
         return System.getProperty("user.dir");
+    }
+    //get path json
+    public static String getProjectPathDataJson() {
+        return System.getProperty("user.dir") + "/src/DataObjects/data.json";
     }
 
     //    random string
@@ -33,5 +39,13 @@ public class Utilities {
         int randomSeatType = (int)((Math.random() * 5) + 1);
 
         return randomSeatType;
+    }
+
+//    Scroll Page
+    public static void scrollPage(int height)
+    {
+        String scroll = "window.scroll(0, %s)";
+        JavascriptExecutor js = ((JavascriptExecutor) Constant.WEBDRIVER);
+        js.executeScript(String.format(scroll, height));
     }
 }

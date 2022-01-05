@@ -1,6 +1,6 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +13,7 @@ public class Testcase08 extends TestBase {
 
         System.out.println("TC 08 - Step1: Navigate to Login Page");
         homePage.navigateToHomePage();
-        homePage.gotoLoginPage();
+        homePage.goToLoginPage();
 
         System.out.println("TC 08 - Step2: Login with account hasn't been activated.");
         loginPage.login(Constant.UNACTIVATED_USERNAME, Constant.UNACTIVATED_PASSWORD);

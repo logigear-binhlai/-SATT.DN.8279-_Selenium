@@ -1,6 +1,6 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,10 +13,10 @@ public class Testcase05 extends TestBase {
 
         System.out.println("TC 05 - Step1: Navigate to Home Page.");
         homePage.navigateToHomePage();
-        homePage.gotoLoginPage();
+        homePage.goToLoginPage();
 
         System.out.println("TC 05 - Step2: Login multiple times with valid username, invalid password.");
-        loginPage.loginMultipleInvalidPassword(Constant.USERNAME, Constant.INVALIDPASSWORD, 5);
+        loginPage.loginMultipleInvalidPassword(Constant.USERNAME, Constant.INVALID_PASSWORD, 5);
 
         System.out.println("TC 05 - Step4: Check point.");
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();

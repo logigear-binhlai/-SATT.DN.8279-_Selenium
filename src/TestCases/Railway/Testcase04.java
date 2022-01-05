@@ -1,6 +1,6 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,17 +14,17 @@ public class Testcase04 extends TestBase {
 
         System.out.println("TC 04 - Step1: Navigate to Home Page.");
         homePage.navigateToHomePage();
-        homePage.gotoLoginPage();
+        homePage.goToLoginPage();
 
         System.out.println("TC 04 - Step2: Login with valid username, password.");
         loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 
         System.out.println("TC 04 - Step3: Navigate to Book Ticket.");
-        homePage.gotoBookTicket();
+        homePage.goToBookTicket();
 
         System.out.println("TC 04 - Step4: Check point.");
         String actualMsg = bookTicket.getTitleBookTicket();
-        String expectedMsg = Constant.TITLEBOOKTICKET;
+        String expectedMsg = Constant.TITLE_BOOK_TICKET;
 
         Assert.assertEquals(actualMsg, expectedMsg, "The Book Ticket Page is not opened.");
     }

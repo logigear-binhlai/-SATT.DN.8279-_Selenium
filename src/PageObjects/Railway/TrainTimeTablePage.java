@@ -1,6 +1,6 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -9,20 +9,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TrainTimeTablePage {
 //    Locator
-    public final By lnkCheckPrice = By.xpath("//td[text()='Đà Nẵng']/following-sibling::td[text()='Nha Trang']/../" +
-        "td[count(//th[text()='Check Price']/preceding-sibling::th)+1]/a");
-    WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 20);
+    String lnkCheckPrice = "//td[text()='%s']/following-sibling::td[text()='%s']/../" +
+        "td[count(//th[text()='Check Price']/preceding-sibling::th)+1]/a";
+    WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 10);
 
 //    Element
-    public WebElement getLnkCheckPrice()
+    public WebElement getLnkCheckPrice(String depart, String arrive)
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(lnkCheckPrice));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+                String.format(lnkCheckPrice, depart, arrive))));
     }
 
 //    Methods
-    public void navigateToCheckTicket()
+    public void navigateToCheckTicket(String depart, String arrive)
     {
-        this.getLnkCheckPrice().sendKeys(Keys.ENTER);
+        this.getLnkCheckPrice(depart, arrive).sendKeys(Keys.ENTER);
     }
 
     public String getTittle()

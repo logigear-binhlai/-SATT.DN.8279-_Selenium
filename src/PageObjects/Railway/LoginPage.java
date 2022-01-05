@@ -1,11 +1,10 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-
-import java.util.Objects;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends  GeneralPage{
 
@@ -14,26 +13,27 @@ public class LoginPage extends  GeneralPage{
     public final By txtPassword = By.id("password");
     public final By btnLogin = By.xpath("//input[@value='login']");
     public final By lblLoginErrorMsg = By.xpath("//p[@class='message error LoginForm']");
+    public final WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 10);
 
 //    Elements
     public WebElement getTxtUsername()
     {
-        return Constant.WEBDRIVER.findElement(txtUsername);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(txtUsername));
     }
 
     public WebElement getTxtPassword()
     {
-        return Constant.WEBDRIVER.findElement(txtPassword);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(txtPassword));
     }
 
     public WebElement getBtnLogin()
     {
-        return Constant.WEBDRIVER.findElement(btnLogin);
+        return wait.until(ExpectedConditions.elementToBeClickable(btnLogin));
     }
 
     public WebElement getLblLoginErrorMsg()
     {
-        return Constant.WEBDRIVER.findElement(lblLoginErrorMsg);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(lblLoginErrorMsg));
     }
 
     //Methods

@@ -1,6 +1,6 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -21,7 +21,7 @@ public class Testcase07 extends TestBase {
 
         System.out.println("TC 07 - Step3: Check point.");
         String actualMsg = registerPage.getTxtWelcomeMsg().getText();
-        String expectedMsg = Constant.WELCOMEMSG;
+        String expectedMsg = Constant.WELCOME_MSG;
         Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
     }
 }

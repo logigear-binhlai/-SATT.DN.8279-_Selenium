@@ -1,6 +1,6 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +13,7 @@ public class Testcase02 extends TestBase {
 
         System.out.println("TC 02 - Step1: Navigate to Home Page");
         homePage.navigateToHomePage();
-        homePage.gotoLoginPage();
+        homePage.goToLoginPage();
 
         System.out.println("TC 02 - Step2: Login with blank username.");
         loginPage.login(Constant.BLANK_USERNAME, Constant.PASSWORD);

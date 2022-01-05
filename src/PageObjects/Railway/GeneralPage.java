@@ -1,60 +1,69 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GeneralPage {
 
     //locators
     private final By tabLogin = By.xpath("//div[@id=\'menu\']//a[@href='/Account/Login.cshtml']");
-    private final By tabLogout = By.xpath("//div[@id=\'menu\']//a[@href='/Account/Logout']");
+    protected final By tabLogout = By.xpath("//div[@id=\'menu\']//a[@href='/Account/Logout']");
     private final By lblWelcomeMessage = By.xpath("//div[@class='account']/strong");
     private final By tabBookTicket = By.xpath("//div[@id=\'menu\']//a[@href='/Page/BookTicketPage.cshtml']/span");
     private final By tabMyTicket = By.xpath("//div[@id=\'menu\']//a[@href='/Page/ManageTicket.cshtml']/span");
     private final By tabChangePassword = By.xpath("//div[@id=\'menu\']//a[@href='/Account/ChangePassword.cshtml']/span");
     private final By tabRegister = By.xpath("//div[@id=\'menu\']//a[@href='/Account/Register.cshtml']/span");
-    private final By tabTrainTableTime = By.xpath("//div[@id='menu']//a[@href='TrainTimeListPage.cshtml']/span");
+    private final By tabTrainTableTime = By.xpath("//div[@id=\'menu\']//a[@href='TrainTimeListPage.cshtml']/span");
+    private final By tabContact = By.xpath("//div[@id=\'menu\']//a[@href='/Page/Contact.cshtml']/span");
+    protected final WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 10);
 
     //Elements
     protected WebElement getTabLogin()
     {
-        return Constant.WEBDRIVER.findElement(tabLogin);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabLogin));
     }
 
     protected WebElement getTabLogout()
     {
-        return Constant.WEBDRIVER.findElement(tabLogout);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabLogout));
     }
 
     protected WebElement getTabBookTicket()
     {
-        return Constant.WEBDRIVER.findElement(tabBookTicket);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabBookTicket));
     }
 
     protected WebElement getTabMyTicket()
     {
-        return Constant.WEBDRIVER.findElement(tabMyTicket);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabMyTicket));
     }
 
     protected WebElement getTabChangePassword()
     {
-        return Constant.WEBDRIVER.findElement(tabChangePassword);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabChangePassword));
     }
 
     protected WebElement getLblWelcomeMessage()
     {
-        return Constant.WEBDRIVER.findElement(lblWelcomeMessage);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(lblWelcomeMessage));
     }
 
     protected WebElement getTabRegister()
     {
-        return Constant.WEBDRIVER.findElement(tabRegister);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabRegister));
     }
 
     protected WebElement getTabTrainTimeTable()
     {
-        return Constant.WEBDRIVER.findElement(tabTrainTableTime);
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabTrainTableTime));
+    }
+
+    protected WebElement getTabContact()
+    {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabContact));
     }
 
     //Methods
@@ -63,22 +72,22 @@ public class GeneralPage {
         return this.getLblWelcomeMessage().getText();
     }
 
-    public void gotoLoginPage()
+    public void goToLoginPage()
     {
         this.getTabLogin().click();
     }
 
-    public void gotoBookTicket()
+    public void goToBookTicket()
     {
         this.getTabBookTicket().click();
     }
 
-    public void gotoMyTicket()
+    public void goToMyTicket()
     {
         this.getTabMyTicket().click();
     }
 
-    public void gotoChangePassword()
+    public void goToChangePassword()
     {
         this.getTabChangePassword().click();
     }
@@ -91,5 +100,15 @@ public class GeneralPage {
     public void goToTrainTimeTable()
     {
         this.getTabTrainTimeTable().click();
+    }
+
+    public void goToContact()
+    {
+        this.getTabContact().click();
+    }
+
+    public void goToLogout()
+    {
+        this.getTabLogout().click();
     }
 }

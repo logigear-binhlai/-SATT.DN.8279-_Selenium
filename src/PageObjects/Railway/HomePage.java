@@ -1,6 +1,8 @@
 package Railway;
 
-import Constant.Constant;
+import Common.Constant;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends GeneralPage{
 
@@ -8,5 +10,20 @@ public class HomePage extends GeneralPage{
     public void navigateToHomePage()
     {
         Constant.WEBDRIVER.navigate().to(Constant.RAILWAY_URL);
+    }
+
+    public String getTitleHomePage()
+    {
+       return Constant.WEBDRIVER.getTitle();
+    }
+
+    public Boolean isDisplayTabLogout()
+    {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(tabLogout)).isDisplayed();
+        } catch(TimeoutException ex) {
+            System.out.println(ex);
+        }
+        return false;
     }
 }
