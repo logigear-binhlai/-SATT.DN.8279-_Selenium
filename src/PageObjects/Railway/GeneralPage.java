@@ -1,10 +1,8 @@
 package Railway;
 
-import Common.Constant;
+import Common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GeneralPage {
 
@@ -18,52 +16,51 @@ public class GeneralPage {
     private final By tabRegister = By.xpath("//div[@id=\'menu\']//a[@href='/Account/Register.cshtml']/span");
     private final By tabTrainTableTime = By.xpath("//div[@id=\'menu\']//a[@href='TrainTimeListPage.cshtml']/span");
     private final By tabContact = By.xpath("//div[@id=\'menu\']//a[@href='/Page/Contact.cshtml']/span");
-    protected final WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 10);
 
-    //Elements
+//    Elements
     protected WebElement getTabLogin()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabLogin));
+        return Utilities.waitForElement(10, tabLogin);
     }
 
     protected WebElement getTabLogout()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabLogout));
+        return Utilities.waitForElement(10, tabLogout);
     }
 
     protected WebElement getTabBookTicket()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabBookTicket));
+        return Utilities.waitForElement(10, tabBookTicket);
     }
 
     protected WebElement getTabMyTicket()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabMyTicket));
+        return Utilities.waitForElement(10, tabMyTicket);
     }
 
     protected WebElement getTabChangePassword()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabChangePassword));
+        return Utilities.waitForElement(10, tabChangePassword);
     }
 
     protected WebElement getLblWelcomeMessage()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(lblWelcomeMessage));
+        return Utilities.waitForElement(10, lblWelcomeMessage);
     }
 
     protected WebElement getTabRegister()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabRegister));
+        return Utilities.waitForElement(10, tabRegister);
     }
 
     protected WebElement getTabTrainTimeTable()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabTrainTableTime));
+        return Utilities.waitForElement(10, tabTrainTableTime);
     }
 
     protected WebElement getTabContact()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(tabContact));
+        return Utilities.waitForElement(10, tabContact);
     }
 
     //Methods

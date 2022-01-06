@@ -5,32 +5,52 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Testcase06 extends TestBase {
+
+//    Register info
+    private String email = Constant.EMAIL_REGISTER;
+    private String password = Constant.PASSWORD_REGISTER;
+    private String confirm_password = Constant.CONFIRM_PASSWORD_REGISTER;
+    private String pid = Constant.PID;
+
+//    Check point
+    public String titleHomePage = "Safe Railway - Selenium Automation";
+
+//    Create Object
+    public HomePage homePage = new HomePage();
+    public LoginPage loginPage = new LoginPage();
+    public RegisterPage registerPage = new RegisterPage();
+
     @Test(description = "TC 06 - User is redirected to Home page after logging out")
     public void TC06()
     {
-        HomePage homePage = new HomePage();
-        LoginPage loginPage = new LoginPage();
-        ChangePasswordPage changePassword = new ChangePasswordPage();
+//        Pre-condition
+        System.out.println("TC 06 - Step1: Navigate to Register Page.");
+        homePage.navigateToHomePage();
+        homePage.goToRegister();
 
-        System.out.println("TC 06 - Step1: Navigate to Home Page.");
+        System.out.println("TC 06 - Step2: Create an account.");
+        registerPage.registerAccount(email, password, confirm_password, pid);
+
+        System.out.println("TC 06 - Step3: Navigate to Home Page.");
         homePage.navigateToHomePage();
         homePage.goToLoginPage();
 
-        System.out.println("TC 06 - Step2: Login with valid username, password.");
-        loginPage.login(Constant.USERNAME, Constant.PASSWORD);
+        System.out.println("TC 06 - Step4: Login with valid username, password.");
+        loginPage.login(email, password);
+        System.out.println("The email: " + email);
+        System.out.println("The password: " + password);
 
-        System.out.println("TC 06 - Step3: Navigate to Contact Page.");
+        System.out.println("TC 06 - Step5: Navigate to Contact Page.");
         homePage.goToContact();
 
-        System.out.println("TC 06 - Step4: Navigate to Logout.");
+        System.out.println("TC 06 - Step6: Navigate to Logout.");
         homePage.goToLogout();
 
-        System.out.println("TC 06 - Step5: Check point Home Page.");
+        System.out.println("TC 06 - Step7: Check point Home Page.");
         String actualMsgMyTicket = homePage.getTitleHomePage();
-        String expectedMsgMyTicket = Constant.TITLE_HOMEPAGE;
-        Assert.assertEquals(actualMsgMyTicket, expectedMsgMyTicket, "The My Ticket Page is not opened.");
+        Assert.assertEquals(actualMsgMyTicket, titleHomePage, "The My Ticket Page is not opened.");
 
-        System.out.println("TC 06 - Step6: Check point Logout.");
+        System.out.println("TC 06 - Step8: Check point Logout.");
         Assert.assertFalse(homePage.isDisplayTabLogout(), "Tab Logout was displayed. Failed !!!");
     }
 }

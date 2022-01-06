@@ -1,39 +1,42 @@
 package Railway;
 
-import Common.Constant;
+import Common.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage extends  GeneralPage{
 
 //    Locator
     public final By txtUsername = By.id("username");
     public final By txtPassword = By.id("password");
-    public final By btnLogin = By.xpath("//input[@value='login']");
+    public final By btnLogin = By.xpath("//input[@value='Login']");
     public final By lblLoginErrorMsg = By.xpath("//p[@class='message error LoginForm']");
-    public final WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 10);
+    public final By lblLoginMsg = By.xpath("//div[@id='content']/h1");
 
 //    Elements
     public WebElement getTxtUsername()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(txtUsername));
+        return Utilities.waitForElement(10, txtUsername);
     }
 
     public WebElement getTxtPassword()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(txtPassword));
+        return Utilities.waitForElement(10, txtPassword);
     }
 
     public WebElement getBtnLogin()
     {
-        return wait.until(ExpectedConditions.elementToBeClickable(btnLogin));
+        return Utilities.waitForElement(10, btnLogin);
     }
 
     public WebElement getLblLoginErrorMsg()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(lblLoginErrorMsg));
+        return Utilities.waitForElement(10, lblLoginErrorMsg);
+    }
+
+    public WebElement getLblLoginMsg()
+    {
+        return Utilities.waitForElement(10, lblLoginMsg);
     }
 
     //Methods

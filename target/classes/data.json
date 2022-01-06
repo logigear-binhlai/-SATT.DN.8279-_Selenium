@@ -1,24 +1,32 @@
 {
   "TC01": {
-    "departDate": "1/15/2022",
     "departStation": "Quảng Ngãi",
     "arriveStation": "Nha Trang",
     "seatType": "Soft seat with air conditioner",
+    "ticketAmount": "1"
+  },
+  "TC14": {
+    "departStation": "Đà Nẵng",
+    "arriveStation": "Sài Gòn",
+    "seatType": "Soft bed",
     "ticketAmount": "3"
   },
-  "TC02": {
-    "departDate": "1/17/2022",
-    "departStation": "Quảng Ngãi",
-    "arriveStation": "Đà Nẵng",
+  "TC15": {
+    "departStation": "Đà Nẵng",
+    "arriveStation": "Sài Gòn",
     "seatType": "Soft bed",
     "ticketAmount": "1"
   },
-
-  "TC17": {
-    "departDate": "1/20/2022",
+  "TC16": {
     "departStation": "Quảng Ngãi",
     "arriveStation": "Đà Nẵng",
     "seatType": "Soft bed with air conditioner",
-    "ticketAmount": "2"
+    "ticketAmount": "1"
+  },
+  "TC17": {
+    "departStation": "Quảng Ngãi",
+    "arriveStation": "Đà Nẵng",
+    "seatType": "Soft bed with air conditioner",
+    "ticketAmount": "10"
   }
 }

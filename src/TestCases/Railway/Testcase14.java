@@ -8,58 +8,67 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class Testcase14 extends TestBaseWithPreCondition {
+public class Testcase14 extends TestBase {
+
+//    Register info
+    private String email = Constant.EMAIL_REGISTER;
+    private String password = Constant.PASSWORD_REGISTER;
+    private String confirm_password = Constant.CONFIRM_PASSWORD_REGISTER;
+    private String pid = Constant.PID;
+
+//    Check point
+    public String successMsg = "Ticket Booked Successfully!";
+
+//    Create Object
+    public HomePage homePage = new HomePage();
+    public LoginPage loginPage = new LoginPage();
+    public RegisterPage registerPage = new RegisterPage();
+    BookTicketPage bookTicketPage = new BookTicketPage();
+
     @Test(description = "TC 14 - User can book many tickets at a time.", dataProvider = "data-bookTicket")
-    public void TC14(String depart_date, String depart_station, String arrive_station, String seat_type,
+    public void TC14(String depart_station, String arrive_station, String seat_type,
                      String ticket_amount)
     {
-        HomePage homePage = new HomePage();
-        LoginPage loginPage = new LoginPage();
-        BookTicketPage bookTicketPage = new BookTicketPage();
+//        Pre-condition
+        System.out.println("TC 14 - Step1: Navigate to Register Page.");
+        homePage.navigateToHomePage();
+        homePage.goToRegister();
+
+        System.out.println("TC 14 - Step2: Create an account.");
+        registerPage.registerAccount(email, password, confirm_password, pid);
 
         System.out.println("TC 14 - Step3: Navigate to Login Page.");
-        homePage.navigateToHomePage();
         homePage.goToLoginPage();
 
         System.out.println("TC 14 - Step4: Login with valid account.");
         loginPage.login(email, password);
-        System.out.println(email);
-        System.out.println(password);
+        System.out.println("The email: " + email);
+        System.out.println("The password: " + password);
 
         System.out.println("TC 14 - Step5: Navigate to Book Ticket Page.");
         homePage.goToBookTicket();
 
         System.out.println("TC 14 - Step6: Book Ticket.");
-        bookTicketPage.bookTicketWithDataProvider(depart_date, depart_station, arrive_station,
+        bookTicketPage.bookTicketWithDataProvider(depart_station, arrive_station,
                 seat_type, ticket_amount);
 
         System.out.println("TC 14 - Step7: Check point.");
         String actualMsg = bookTicketPage.getTxtSuccess().getText();
-        String expectedMsg = Constant.SUCCESS_MSG;
-        Assert.assertEquals(actualMsg, expectedMsg, "An message is not displayed as design.");
+        Assert.assertEquals(actualMsg, successMsg, "An message is not displayed as design.");
     }
 
     @DataProvider(name = "data-bookTicket")
     public Object[][] dataProvider() {
         String filePath = Utilities.getProjectPathDataJson();
         JsonObject jsonObject = JsonHelper.getJsonObject(filePath);
-        JsonObject dataTC01 = jsonObject.getAsJsonObject("TC01");
-        String departDate01 = dataTC01.get("departDate").getAsString();
+        JsonObject dataTC01 = jsonObject.getAsJsonObject("TC14");
         String departStation01 = dataTC01.get("departStation").getAsString();
         String arriveStation01 = dataTC01.get("arriveStation").getAsString();
         String seatType01 = dataTC01.get("seatType").getAsString();
         String ticketAmount01 = dataTC01.get("ticketAmount").getAsString();
 
-        JsonObject dataTC02 = jsonObject.getAsJsonObject("TC02");
-        String departDate02 = dataTC02.get("departDate").getAsString();
-        String departStation02 = dataTC02.get("departStation").getAsString();
-        String arriveStation02 = dataTC02.get("arriveStation").getAsString();
-        String seatType02 = dataTC02.get("seatType").getAsString();
-        String ticketAmount02 = dataTC02.get("ticketAmount").getAsString();
-
         Object[][] object = new Object[][]{
-                {departDate01 ,departStation01, arriveStation01, seatType01, ticketAmount01},
-                {departDate02 ,departStation02, arriveStation02, seatType02, ticketAmount02}
+                {departStation01, arriveStation01, seatType01, ticketAmount01}
         };
 
         return object;

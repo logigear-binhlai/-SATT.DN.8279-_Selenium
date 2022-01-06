@@ -5,22 +5,40 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Testcase02 extends TestBase {
+
+    public String blankUsername = "";
+    public String errorLoginBlankUsername = "There was a problem with your login and/or errors exist in your form.";
+
+//    Register info
+    private String email = Constant.EMAIL_REGISTER;
+    private String password = Constant.PASSWORD_REGISTER;
+    private String confirm_password = Constant.CONFIRM_PASSWORD_REGISTER;
+    private String pid = Constant.PID;
+
+//    Create Object
+    public HomePage homePage = new HomePage();
+    public LoginPage loginPage = new LoginPage();
+    public RegisterPage registerPage = new RegisterPage();
+
     @Test(description = "TC 02 - User can't login with blank \'Username\' textbox.")
     public void TC02()
     {
-        HomePage homePage = new HomePage();
-        LoginPage loginPage = new LoginPage();
-
-        System.out.println("TC 02 - Step1: Navigate to Home Page");
+//        Pre-condition
+        System.out.println("TC 02 - Step1: Navigate to Register Page.");
         homePage.navigateToHomePage();
+        homePage.goToRegister();
+
+        System.out.println("TC 02 - Step2: Create an account.");
+        registerPage.registerAccount(email, password, confirm_password, pid);
+
+        System.out.println("TC 02 - Step3: Navigate to Login Page");
         homePage.goToLoginPage();
 
-        System.out.println("TC 02 - Step2: Login with blank username.");
-        loginPage.login(Constant.BLANK_USERNAME, Constant.PASSWORD);
+        System.out.println("TC 02 - Step4: Login with blank username.");
+        loginPage.login(blankUsername, password);
 
-        System.out.println("TC 02 - Step3: Check point.");
+        System.out.println("TC 02 - Step5: Check point.");
         String actualMsg = loginPage.getLblLoginErrorMsg().getText();
-        String expectedMsg = Constant.ERROR_LOGIN_BLANK_USERNAME;
-        Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
+        Assert.assertEquals(actualMsg, errorLoginBlankUsername, "Welcome message is not displayed as expected");
     }
 }

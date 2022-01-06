@@ -1,8 +1,8 @@
 package Railway;
 
 import Common.Constant;
+import Common.Utilities;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends GeneralPage{
 
@@ -20,7 +20,7 @@ public class HomePage extends GeneralPage{
     public Boolean isDisplayTabLogout()
     {
         try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(tabLogout)).isDisplayed();
+            Utilities.waitForElement(10, tabLogout).isDisplayed();
         } catch(TimeoutException ex) {
             System.out.println(ex);
         }

@@ -3,49 +3,46 @@ package Railway;
 import Common.Constant;
 import Common.Utilities;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import java.awt.*;
 
 
 public class MyTicketPage {
 
 //    Locator
-    public final By btnCancel = By.xpath("//*[@id=\"content\"]/form//table[@class='MyTable']/tbody/tr//td/" +
-        "input[@onclick='DeleteTicket(4658);']");
-    WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, 10);
+    String btnDynamicCancel = "//td[text()='%s']/following-sibling::td[text()='%s']/../td/" +
+        "input[@type='button']";
+    public final By lblElementScroll = By.xpath("//div[@id='content']//form//div[@class='error message']");
 
 //    Elments
-    public WebElement getBtnCancel()
+    public WebElement getLblElementScroll()
     {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(btnCancel));
+        return Utilities.waitForElement(10, lblElementScroll);
     }
 
-    public String getTitleMyTicket()
+    public WebElement getBtnCancel(String depart, String arrive)
     {
-        return Constant.WEBDRIVER.getTitle();
+        return Utilities.waitForDynamicElement(10, btnDynamicCancel, depart, arrive);
     }
 
 //    Methods
-    public void cancelTicket()
+    public void cancelTicket(String depart, String arrive)
     {
-        this.getBtnCancel().sendKeys(Keys.ENTER);
+        this.getBtnCancel(depart, arrive).sendKeys(Keys.ENTER);
     }
 
     public void acceptAlert() throws InterruptedException, AWTException {
         Alert alert = Constant.WEBDRIVER.switchTo().alert();
         alert.accept();
-        Utilities.scrollPage(400);
+        Utilities.scrollPage(getLblElementScroll());
     }
 
-    public Boolean isItemDisplay()
+    public Boolean isItemDisplay(String depart, String arrive)
     {
         try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(btnCancel)).isDisplayed();
+            Utilities.waitForDynamicElement(10, btnDynamicCancel, depart, arrive);
         } catch(TimeoutException ex) {
             System.out.println(ex);
         }
         return false;
     }
-
 }
