@@ -73,6 +73,23 @@ public class Utilities {
         , depart, arrive))));
     }
 
+    public static WebElement waitForOneDynamicElement(int times, String locator, String string)
+    {
+        WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, times);
+
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(locator
+                , string))));
+    }
+
+    public static WebElement waitForMultipleDynamicElement(int times, String locator, String depart, String arrive,
+                                                           String string)
+    {
+        WebDriverWait wait = new WebDriverWait(Constant.WEBDRIVER, times);
+
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(locator
+                , depart, arrive, string))));
+    }
+
 //  Scroll Page
     public static void scrollPage(WebElement element)
     {

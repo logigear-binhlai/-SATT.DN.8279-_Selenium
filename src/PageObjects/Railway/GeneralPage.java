@@ -16,6 +16,7 @@ public class GeneralPage {
     private final By tabRegister = By.xpath("//div[@id=\'menu\']//a[@href='/Account/Register.cshtml']/span");
     private final By tabTrainTableTime = By.xpath("//div[@id=\'menu\']//a[@href='TrainTimeListPage.cshtml']/span");
     private final By tabContact = By.xpath("//div[@id=\'menu\']//a[@href='/Page/Contact.cshtml']/span");
+    private final By tabTicketPrice = By.xpath("//div[@id=\'menu\']//a[@href='/Page/TrainPriceListPage.cshtml']/span");
 
 //    Elements
     protected WebElement getTabLogin()
@@ -62,6 +63,10 @@ public class GeneralPage {
     {
         return Utilities.waitForElement(10, tabContact);
     }
+    protected WebElement getTabTicketPrice()
+    {
+        return Utilities.waitForElement(10, tabTicketPrice);
+    }
 
     //Methods
     public String getWelcomeMessage()
@@ -107,5 +112,10 @@ public class GeneralPage {
     public void goToLogout()
     {
         this.getTabLogout().click();
+    }
+
+    public void goToTickPrice()
+    {
+        this.getTabTicketPrice().click();
     }
 }

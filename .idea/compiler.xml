@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="LAITIEUBINH_8279" />
         <module name="Project_Selenium" />
       </profile>
     </annotationProcessing>

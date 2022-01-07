@@ -1,21 +1,24 @@
 <suite name="Suite1" verbose="1" >
     <test name="Test" >
         <classes>
-            <class name="Railway.Testcase01" />
-            <class name="Railway.Testcase02" />
-            <class name="Railway.Testcase03" />
-            <class name="Railway.Testcase04" />
-            <class name="Railway.Testcase05" />
-            <class name="Railway.Testcase06" />
-            <class name="Railway.Testcase07" />
-            <class name="Railway.Testcase08" />
-            <class name="Railway.Testcase09" />
-            <class name="Railway.Testcase10" />
-            <class name="Railway.Testcase11" />
-            <class name="Railway.Testcase14" />
-            <class name="Railway.Testcase14Set3" />
-            <class name="Railway.Testcase15" />
-            <class name="Railway.Testcase16" />
+<!--            <class name="Railway.Testcase01" />-->
+<!--            <class name="Railway.Testcase02" />-->
+<!--            <class name="Railway.Testcase03" />-->
+<!--            <class name="Railway.Testcase04" />-->
+<!--            <class name="Railway.Testcase05" />-->
+<!--            <class name="Railway.Testcase06" />-->
+<!--            <class name="Railway.Testcase07" />-->
+<!--            <class name="Railway.Testcase08" />-->
+<!--            <class name="Railway.Testcase09" />-->
+<!--            <class name="Railway.Testcase10" />-->
+<!--            <class name="Railway.Testcase11" />-->
+<!--            <class name="Railway.Testcase14" />-->
+<!--            <class name="Railway.Testcase14Set3" />-->
+<!--            <class name="Railway.Testcase15" />-->
+<!--            <class name="Railway.Testcase16" />-->
+            <class name="Railway.FTTC701" />
+            <class name="Railway.FTTC702" />
+            <class name="Railway.FTTC703" />
         </classes>
     </test>
 

@@ -23,7 +23,7 @@ public class Testcase14 extends TestBase {
     public HomePage homePage = new HomePage();
     public LoginPage loginPage = new LoginPage();
     public RegisterPage registerPage = new RegisterPage();
-    BookTicketPage bookTicketPage = new BookTicketPage();
+    public BookTicketPage bookTicketPage = new BookTicketPage();
 
     @Test(description = "TC 14 - User can book many tickets at a time.", dataProvider = "data-bookTicket")
     public void TC14(String depart_station, String arrive_station, String seat_type,
@@ -53,7 +53,7 @@ public class Testcase14 extends TestBase {
                 seat_type, ticket_amount);
 
         System.out.println("TC 14 - Step7: Check point.");
-        String actualMsg = bookTicketPage.getTxtSuccess().getText();
+        String actualMsg = bookTicketPage.getLBLSuccessMSG().getText();
         Assert.assertEquals(actualMsg, successMsg, "An message is not displayed as design.");
     }
 

@@ -7,7 +7,7 @@
   },
   "TC14": {
     "departStation": "Đà Nẵng",
-    "arriveStation": "Sài Gòn",
+    "arriveStation": "Huế",
     "seatType": "Soft bed",
     "ticketAmount": "3"
   },
@@ -28,5 +28,23 @@
     "arriveStation": "Đà Nẵng",
     "seatType": "Soft bed with air conditioner",
     "ticketAmount": "10"
+  },
+  "FTTC01": {
+  "departStation": "Nha Trang",
+  "arriveStation": "Huế",
+  "seatType": "Soft seat",
+  "ticketAmount": "2"
+},
+  "FTTC02": {
+    "departStation": "Quảng Ngãi",
+    "arriveStation": "Đà Nẵng",
+    "seatType": "Soft seat",
+    "ticketAmount": "1"
+  },
+  "FTTC03": {
+    "departStation": "Huế",
+    "arriveStation": "Quảng Ngãi",
+    "seatType": "Hard seat",
+    "ticketAmount": "2"
   }
 }
